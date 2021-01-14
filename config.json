@@ -1,0 +1,17 @@
+{
+    "DB_Host": "172.21.8.13",
+    "DB_UserName":"hr_user",
+    "DB_Password":"me@dm1n!",
+    "DB_Schema":"heatrate",
+    "Recorders": [
+      {
+        "Name": "Unit6",
+        "NoOfParams": "20",
+        "Schema":"http://",
+        "RecorderIp": "172.21.10.241",
+        "RecorderWebURL": "/dsp_data.cgi?is_ref=0",
+        "UserName": "user",
+        "Password": ""
+      }
+    ]
+  }
