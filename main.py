@@ -7,6 +7,20 @@ import mysql.connector
 from iapws import IAPWS95
 from threading import Timer
 
+class PT():
+
+    def __init__(self, t, hFunction):
+        self.t = t
+        self.hFunction = hFunction
+        self.thread = Timer(self.t, self.handle_function)
+
+    def handle_function(self):
+        self.hFunction()
+        self.thread = Timer(self.t, self.handle_function)
+        self.thread.start()
+
+    def start(self):
+        self.thread.start()
 
 with open('config.json') as configfile:
     configuration=json.load(configfile)
@@ -98,5 +112,5 @@ def extractHeatRate():
         insertToDB(recorder["Name"],dbActualRow,dbCalculatedRow)
         #print(dbActualRow)
         #print(dbCalculatedRow)
-t = Timer(180.0, extractHeatRate)
+t = PT(180.0, extractHeatRate)
 t.start()
